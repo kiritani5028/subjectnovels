@@ -1,3 +1,9 @@
 <div class="text-center">
   <h1>一週三題小説</h1>
 </div>
+
+<% if logged_in? %>
+  <p class="text-center">ログイン完了ユーザ: <%= current_user.name %></p>
+<% else %>
+  <p class="text-center">アカウント登録は<%= link_to 'こちら', signup_path %></p>
+<% end %>
