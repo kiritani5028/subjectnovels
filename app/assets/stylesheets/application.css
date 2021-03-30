@@ -20,3 +20,16 @@ header{
 body{
     background-color: rgba(196,225,164,0.05);
 }
+
+.btn-config{
+    color: white;
+    background-color: rgba(104,158,57,0.5);
+    border-radius: 100vh;
+    font-size: 13px;
+    width: 100px;
+}
+
+.btn-config:hover{
+    color: white;
+    background-color: #689e39;
+}

@@ -7,3 +7,14 @@
 <% else %>
   <p class="text-center">アカウント登録は<%= link_to 'こちら', signup_path %></p>
 <% end %>
+
+<ul>
+  <% @novels.each do |novel| %>
+      <% if !novel.is_draft%>
+        <li>
+          <%= novel.text %><br>
+          <%= link_to "閲覧", novel_path(novel), class: 'btn btn-success btn-sm' %>
+          </li>
+      <% end %>
+  <% end %>
+</ul>

@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# coding: utf-8
+words = [
+    "天使",
+    "悪魔",
+    "勇者"
+    ]
+    
+words.each do |word|
+  Word.find_or_create_by(:content => word)
+end

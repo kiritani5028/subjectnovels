@@ -1,0 +1,4 @@
+<h1 class="text-center"><%= @novel.title %></h1>
+<p class="text-center"><%= @novel.user.name%>：作</p>
+<p class="text-center"><%= @novel.text %></p>
+<%= render "favorites/favorite_button", novel: @novel %>

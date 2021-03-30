@@ -1,0 +1,29 @@
+<div class="text-center mt-4">
+  <h1>新規作成ページ</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <%= form_with(model: @novel, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="form-group text-center">
+        <%= f.label :title, "タイトル", class: "mt-4" %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group text-center">
+        <%= f.label :text, "本文", class: "mt-4" %><br>
+        <%= f.text_area :text, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group text-center">
+        <%= f.select :is_draft, [["下書き", "true"],["公開", "false"]], {}, class: 'form-control mt-4' %>
+      </div>
+      
+      <div class="text-center mt-4">
+        <%= f.submit '投稿', class: 'btn-config btn  mt-5' %>
+      </div>
+    <% end %>
+  </div>
+</div>
