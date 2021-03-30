@@ -1,3 +1,4 @@
+<!--ログインしていれば、お気に入りに追加 or 解除のボタンを表示-->
 <% if logged_in?%>
   <% if current_user.like?(novel) %>
     <%= form_with(model: current_user.favorites.find_by(novel_id: novel.id), local: true, method: :delete) do |f| %>

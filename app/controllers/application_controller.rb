@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   private
   
-  
+  #ログインしていないユーザーはトップページへ移動
   def require_user_logged_in
     unless logged_in?
       redirect_to login_url

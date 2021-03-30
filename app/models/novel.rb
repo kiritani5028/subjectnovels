@@ -1,9 +1,9 @@
 class Novel < ApplicationRecord
-  belongs_to :user
+  belongs_to :user #userモデルとの紐付け
   
-  validates :title, presence: true
-  validates :text, presence: true
+  validates :title, presence: true, length: { maximum: 255 }
+  validates :text, presence: true, length: { maximum: 100000 }
   
-  has_many :favorites
-  has_many :like_user, through: :favorites, source: :user
+  has_many :favorites #favoriteモデルとの紐付け
+  has_many :like_user, through: :favorites, source: :user #favoriteモデルに紐付いているuserモデルとの紐付け
 end

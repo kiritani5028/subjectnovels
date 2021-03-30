@@ -1,15 +1,18 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show]
   
+  #ユーザー詳細ページ（投稿した小説一覧）
   def show
     @user = User.find(params[:id])
     @novels = current_user.novels.order(id: :desc).page(params[:page]).per(25)
   end
-
+  
+  #ユーザー新規登録ページ
   def new
     @user = User.new
   end
-
+  
+  #ユーザーを作成
   def create
     @user = User.new(user_params)
 
@@ -22,6 +25,7 @@ class UsersController < ApplicationController
     end
   end
   
+  #ユーザを削除
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -30,7 +34,8 @@ class UsersController < ApplicationController
   end
   
   private
-
+  
+  #ストロングパラメータ
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end

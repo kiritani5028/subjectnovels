@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
   def new
   end
-
+  
+  #ログイン
   def create
     email = params[:session][:email].downcase
     password = params[:session][:password]
@@ -13,7 +14,8 @@ class SessionsController < ApplicationController
       render :new
     end
   end
-
+  
+  #ログアウト
   def destroy
     session[:user_id] = nil
     flash[:success] = 'ログアウトしました。'
@@ -21,7 +23,8 @@ class SessionsController < ApplicationController
   end
   
   private
-
+  
+  #入力されたメールアドレスとパスワードが正しければtrue、間違っていればfalse、を返す
   def login(email, password)
     @user = User.find_by(email: email)
     if @user && @user.authenticate(password)
