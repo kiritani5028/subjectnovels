@@ -11,7 +11,7 @@ namespace :scheduler do
       subject.save
     end
     
-    if today.wday == 0
+    if today.wday == 3
       3.times do ||
         get_word
       end
