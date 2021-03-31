@@ -1,0 +1,6 @@
+<!--Subjectモデルの最新の３つを取得し表示-->
+<% subjects = Subject.last(3) %>
+
+<% subjects.each do |subject| %>
+  <%= subject.word.content%>
+<% end %>

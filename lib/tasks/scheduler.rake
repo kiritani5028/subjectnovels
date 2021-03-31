@@ -5,18 +5,17 @@ namespace :scheduler do
     require "date"
     today = Date.today
     
-    if today.wday == 0
-      word = Word.where( 'id >= ?', rand(Word.first.id..Word.last.id) ).first
-      subject = word.subjects.build
-      subject.save
-      
-      word = Word.where( 'id >= ?', rand(Word.first.id..Word.last.id) ).first
-      subject = word.subjects.build
-      subject.save
-      
+    def get_word
       word = Word.where( 'id >= ?', rand(Word.first.id..Word.last.id) ).first
       subject = word.subjects.build
       subject.save
     end
+    
+    if today.wday == 0
+      3.times do ||
+        get_word
+      end
+    end
+    
   end
 end
