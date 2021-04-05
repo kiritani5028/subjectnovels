@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_054802) do
+ActiveRecord::Schema.define(version: 2021_04_02_120734) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2021_03_30_054802) do
     t.index ["novel_id"], name: "index_favorites_on_novel_id"
     t.index ["user_id", "novel_id"], name: "index_favorites_on_user_id_and_novel_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "subject_id"
+    t.bigint "novel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["novel_id"], name: "index_links_on_novel_id"
+    t.index ["subject_id"], name: "index_links_on_subject_id"
   end
 
   create_table "novels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,6 +64,8 @@ ActiveRecord::Schema.define(version: 2021_03_30_054802) do
 
   add_foreign_key "favorites", "novels"
   add_foreign_key "favorites", "users"
+  add_foreign_key "links", "novels"
+  add_foreign_key "links", "subjects"
   add_foreign_key "novels", "users"
   add_foreign_key "subjects", "words"
 end

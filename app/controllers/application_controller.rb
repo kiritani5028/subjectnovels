@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+  
+  def counts(user)
+    @count_favorites = user.like_novel.where(is_draft: false).count
+    @count_posts = user.novels.where(is_draft: false).count
+    @count_drafts = user.novels.where(is_draft: true).count
+  end
 end

@@ -21,6 +21,10 @@ body{
     background-color: rgba(196,225,164,0.05);
 }
 
+footer{
+    height: 100px;
+}
+
 .btn-config{
     color: white;
     background-color: rgba(104,158,57,0.5);
@@ -32,4 +36,17 @@ body{
 .btn-config:hover{
     color: white;
     background-color: #689e39;
+}
+
+.btn-red{
+    color: white;
+    background-color: rgba(210,48,47,0.5);
+    border-radius: 100vh;
+    font-size: 13px;
+    width: 100px;
+}
+
+.btn-red:hover{
+    color: white;
+    background-color: #d2302f;
 }

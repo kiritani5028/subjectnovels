@@ -1,0 +1,23 @@
+<div>
+  <% novels.each do |novel| %>
+    <% if !novel.is_draft %>
+      <div class="card mt-4">
+        <div class="card-body">
+          <h4 class="card-title"><%= novel.title %></h4>
+          <p class="card-text border-top">
+            著者：<%= novel.user.name %>
+            <span class="right">
+              <% subjects = novel.link_subject %>
+              <% subjects.each do |subject| %>
+                <span class="badge badge-pill badge-dark">
+                  <%= subject.word.content %>
+                </span>
+              <% end %>
+            </span>
+          </p>
+          <%= link_to "閲覧", novel_path(novel), class: 'btn btn-config btn-sm' %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

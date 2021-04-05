@@ -6,4 +6,11 @@ class Novel < ApplicationRecord
   
   has_many :favorites #favoriteモデルとの紐付け
   has_many :like_user, through: :favorites, source: :user #favoriteモデルに紐付いているuserモデルとの紐付け
+  
+  has_many :links
+  has_many :link_subject, through: :links, source: :subject
+  
+  def connect(subject)
+    self.links.create(subject_id: subject.id)
+  end
 end

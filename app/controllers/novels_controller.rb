@@ -1,10 +1,14 @@
 class NovelsController < ApplicationController
   before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:destroy]
+  include SubjectsHelper
   
   #小説閲覧ページ
   def show
     @novel = Novel.find(params[:id])
+    if @novel.is_draft
+      redirect_to user_url(@novel.user)
+    end
   end
   
   #小説新規作成ページ
@@ -15,7 +19,13 @@ class NovelsController < ApplicationController
   #小説の保存
   def create
     @novel = current_user.novels.build(novel_params)
+    
     if @novel.save
+      subjects = Subject.last(3)
+      subjects.each do |subject|
+        @novel.connect(subject)
+      end
+      
       if @novel.is_draft
         flash[:success] = "小説を下書きに保存しました。"
       else
@@ -31,6 +41,10 @@ class NovelsController < ApplicationController
   #小説編集ページ
   def edit
     @novel = Novel.find(params[:id])
+    if !in_period?(@novel)
+      flash[:danger] = "期間外の作品の編集はできません。"
+      redirect_to root_url
+    end
   end
   
   #小説上書き保存

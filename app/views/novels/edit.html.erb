@@ -1,6 +1,7 @@
 <div class="text-center mt-4">
   <h1>編集ページ</h1>
 </div>
+<%= render 'subjects/three_subjects' %>
 
 <div class="row">
   <div class="col-md-8 offset-md-2">
@@ -13,12 +14,13 @@
       </div>
       
       <div class="form-group text-center">
-        <%= f.label :text, "本文", class: "mt-4" %><br>
+        <%= f.label :text, "本文", class: "mt-4" %>
         <%= f.text_area :text, class: 'form-control' %>
       </div>
       
       <div class="form-group text-center">
-        <%= f.select :is_draft, [["下書き", "true"],["公開", "false"]], {}, class: 'form-control mt-4' %>
+        <%= f.label :is_draft, "投稿設定", class: "mt-4" %>
+        <%= f.select :is_draft, [["非公開", "true"],["公開", "false"]], {}, class: 'form-control' %>
       </div>
       
       <div class="text-center mt-4">

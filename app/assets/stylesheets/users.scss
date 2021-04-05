@@ -1,3 +1,50 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.btn-new{
+    color: white;
+    background-color: rgba(104,158,57,0.5);
+    border-radius: 50px;
+    font-size: 13px;
+}
+
+.btn-new:hover{
+    color: white;
+    background-color: #689e39;
+}
+
+.btn-delete{
+    color: white;
+    background-color: rgba(210,48,47,0.5);
+    border-radius: 50px;
+    font-size: 13px;
+    width: 300px;
+}
+
+.btn-delete:hover{
+    color: white;
+    background-color: #d2302f;
+}
+
+.black{
+    color: black!important;
+    background-color: rgba(0,0,0,0)!important;
+}
+
+.green{
+    color: white!important;
+    background-color: #689e39!important;
+}
+
+.round{
+    height: 20px!important;
+    width: 20px!important;
+    border-radius: 50%!important;
+    line-height: 20px!important;
+    text-align: center!important;
+    border: solid!important;
+}
+
+.right{
+    float: right;
+}

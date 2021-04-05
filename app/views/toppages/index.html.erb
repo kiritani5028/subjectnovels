@@ -1,21 +1,37 @@
-<div class="text-center">
-  <h1>一週三題小説</h1>
-  <%= render 'subjects/three_subjects' %>
-</div>
-
-<% if logged_in? %>
-  <p class="text-center">ログイン完了ユーザ: <%= current_user.name %></p>
-<% else %>
-  <p class="text-center">アカウント登録は<%= link_to 'こちら', signup_path %></p>
-<% end %>
-
-<ul>
-  <% @novels.each do |novel| %>
-      <% if !novel.is_draft%>
-        <li>
-          <%= novel.text %><br>
-          <%= link_to "閲覧", novel_path(novel), class: 'btn btn-success btn-sm' %>
-          </li>
+<div class="row">
+  <div class="text-center col-md-12">
+    <h1 class="my-5 font-weight-bold">一週三題小説</h1>
+    <p class="mt-4">
+      毎週月曜日に3つのお題がランダムで出題されます。<br>
+      3つのお題を全て含んだ短編小説を、その週の日曜日までに書き上げて投稿してください。<br>
+      作品の投稿にはアカウント登録が必要です。アカウント登録は<%= link_to 'こちら', signup_path %>
+    </p>
+  </div>
+  <div class="col-md-12">
+    <%= render 'subjects/three_subjects' %>
+  </div>
+  
+  <div class="mt-5 offset-md-1 col-md-10">
+      <% @novels.each do |novel| %>
+          <% if !novel.is_draft%>
+            <div class="card mt-4">
+              <div class="card-body">
+                <h4 class="card-title"><%= novel.title %></h4>
+                <p class="card-text border-top">
+                  著者：<%= novel.user.name %>
+                  <span class="right">
+                    <% subjects = novel.link_subject %>
+                    <% subjects.each do |subject| %>
+                      <span class="badge badge-pill badge-dark">
+                        <%= subject.word.content %>
+                      </span>
+                    <% end %>
+                  </span>
+                </p>
+                <%= link_to "閲覧", novel_path(novel), class: 'btn btn-config' %>
+              </div>
+            </div>
+          <% end %>
       <% end %>
-  <% end %>
-</ul>
+  </div>
+</div>

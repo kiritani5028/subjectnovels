@@ -5,6 +5,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @novels = current_user.novels.order(id: :desc).page(params[:page]).per(25)
+    counts(@user)
+  end
+  
+  def favorites
+    @user = User.find(params[:id])
+    @novels = current_user.like_novel.order(id: :desc).page(params[:page]).per(25)
+    counts(@user)
+  end
+  
+  def drafts
+    @user = User.find(params[:id])
+    @novels = current_user.novels.order(id: :desc).page(params[:page]).per(25)
+    counts(@user)
   end
   
   #ユーザー新規登録ページ

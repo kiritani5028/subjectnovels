@@ -1,0 +1,29 @@
+<div>
+  <% novels.each do |novel| %>
+    <% if novel.is_draft%>
+      <div class="card mt-4">
+        <div class="card-body">
+          <h4 class="card-title"><%= novel.title %></h4>
+          <p class="card-text border-top">
+            著者：<%= novel.user.name %>
+            <span class="right">
+            <% subjects = novel.link_subject %>
+            <% subjects.each do |subject| %>
+              <span class="badge badge-pill badge-dark">
+                <%= subject.word.content %>
+              </span>
+            <% end %>
+          </span>
+          </p>
+          <%= link_to "削除", novel, method: :delete, data: { confirm: "小説を削除してよろしいですか?" }, class: 'btn btn-red btn-sm' %>
+          <% if in_period?(novel)%>
+            <%= link_to "編集", edit_novel_path(novel), class: 'btn btn-config btn-sm' %>
+            <span class="text-info small">　＊<%= last_duration %> まで編集および投稿ができます。</span>
+          <% else %>
+          　<span class="text-danger small">この作品は期限が過ぎているため編集および投稿ができません</span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
