@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   #トップページ
   root to: "toppages#index"
+  resources :toppages, only: [:index] do
+    collection do
+      get :this_week
+      get :one_week_ago
+      get :two_weeks_ago
+    end
+  end
   
   #ログイン
   get 'login', to: 'sessions#new'

@@ -1,7 +1,7 @@
 <div>
   <h1 class="text-center"><%= @novel.title %></h1>
   <p class="text-center"><%= @novel.user.name %>：作</p>
-  <%= render "novels/this_subjects", novel: @novel %>
+  <%= render "subjects/this_subjects", novel: @novel %>
   <p class="mt-5"><%= safe_join(@novel.text.split("\n"),tag(:br)) %></p>
-  <%= render "favorites/favorite_button", novel: @novel %>
+  <%= render "buttons/favorite_button", novel: @novel %>
 </div>

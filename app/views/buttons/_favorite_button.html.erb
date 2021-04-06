@@ -1,16 +1,22 @@
 <!--ログインしていれば、お気に入りに追加 or 解除のボタンを表示-->
-<div class="text-center mt-5">
+<span class="text-center mt-5">
   <% if logged_in?%>
     <% if current_user.like?(novel) %>
       <%= form_with(model: current_user.favorites.find_by(novel_id: novel.id), local: true, method: :delete) do |f| %>
         <%= hidden_field_tag :novel_id, novel.id %>
-        <%= f.submit "お気に入りを解除", class: 'btn btn-favorite' %>
+        <%= f.button :type => "submit", class: "submit" do %>
+          <i class="fas fa-heart fa-2x pink"></i>
+          <span class="pink"><%= novel.favorites.count %></span>
+        <% end %>
       <% end %>
     <% else %>
       <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
         <%= hidden_field_tag :novel_id, novel.id %>
-        <%= f.submit "お気に入りに追加", class: 'btn btn-favorite' %>
+        <%= f.button :type => "submit", class: "submit" do %>
+          <i class="far fa-heart fa-2x pink"></i>
+          <span class="pink"><%= novel.favorites.count %></span>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
-</div>
+</span>

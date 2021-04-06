@@ -5,18 +5,40 @@ module SubjectsHelper
     novel_subjects = novel.link_subject #取得した小説に紐付いているSubjectモデルのテーブルを取得
     subjects = Subject.last(3) #期間内のsubjectモデルのテーブルを取得
     
-    #それぞれのテーブルのidを配列に入れる
-    novels_id = []
-    novel_subjects.each do |subject|
-      novels_id.push(subject.id)
+    #2つの配列が同じならtrue、違うならfalseを返す
+    if novel_subjects == subjects
+      return true
+    else
+      return false
     end
-    subjects_id = []
-    subjects.each do |subject|
-      subjects_id.push(subject.id)
-    end
+  end
+  
+  #取得した小説が先週のお題かどうか判定
+  def one_week_ago?(novel)
+    novel_subjects = novel.link_subject #取得した小説に紐付いているSubjectモデルのテーブルを取得
+    
+    #先週のsubjectモデルのテーブルを取得
+    n = Subject.last(6) 
+    subjects = n.first(3)
     
     #2つの配列が同じならtrue、違うならfalseを返す
-    if novels_id.sort == subjects_id.sort
+    if novel_subjects == subjects
+      return true
+    else
+      return false
+    end
+  end
+  
+  #取得した小説が先々週のお題かどうか判定
+  def two_weeks_ago?(novel)
+    novel_subjects = novel.link_subject #取得した小説に紐付いているSubjectモデルのテーブルを取得
+    
+    #先々週のsubjectモデルのテーブルを取得
+    n = Subject.last(9) 
+    subjects = n.first(3)
+    
+    #2つの配列が同じならtrue、違うならfalseを返す
+    if novel_subjects == subjects
       return true
     else
       return false
