@@ -5,9 +5,9 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
     has_secure_password
-    has_many :novels #novelモデルとの紐付け
+    has_many :novels, dependent: :destroy #novelモデルとの紐付け
     
-    has_many :favorites #favoriteモデルとの紐付け
+    has_many :favorites, dependent: :destroy #favoriteモデルとの紐付け
     has_many :like_novel, through: :favorites, source: :novel #favoriteモデルに紐付いているnovelモデルとの紐付け
     
     #指定した小説をお気に入りに追加

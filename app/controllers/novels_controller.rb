@@ -1,6 +1,6 @@
 class NovelsController < ApplicationController
   before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy]
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   include SubjectsHelper
   
   #小説閲覧ページ
@@ -40,7 +40,6 @@ class NovelsController < ApplicationController
   
   #小説編集ページ
   def edit
-    @novel = Novel.find(params[:id])
     if !in_period?(@novel)
       flash[:danger] = "期間外の作品の編集はできません。"
       redirect_to root_url
@@ -49,7 +48,6 @@ class NovelsController < ApplicationController
   
   #小説上書き保存
   def update
-    @novel = Novel.find(params[:id])
     if @novel.update(novel_params) 
       if @novel.is_draft
         flash[:success] = "編集した小説を下書きに保存しました。"

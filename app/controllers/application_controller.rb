@@ -10,13 +10,10 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  #ユーザー数カウント
   def counts(user)
     @count_favorites = user.like_novel.where(is_draft: false).count
     @count_posts = user.novels.where(is_draft: false).count
     @count_drafts = user.novels.where(is_draft: true).count
-  end
-  
-  def count_novels(novel)
-    @count_likes = novel.favorites.count
   end
 end
