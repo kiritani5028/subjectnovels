@@ -50,7 +50,8 @@ module SubjectsHelper
     require "date"
     
     #月曜日を取得
-    sd = Date.today
+    sd = DateTime.now
+    sd += Rational(9, 24)
     if sd.wday == 0
         sd -= 6
     elsif sd.wday > 1
@@ -58,7 +59,8 @@ module SubjectsHelper
     end
     
     #日曜日を取得
-    fd = Date.today
+    fd = DateTime.now
+    fd += Rational(9, 24)
     if fd.wday > 0
         fd += 7
         fd -= fd.wday
@@ -70,7 +72,8 @@ module SubjectsHelper
   def last_duration
     require "date"
     #日曜日を取得
-    d = Date.today
+    d = DateTime.now
+    d += Rational(9, 24) 
     if d.wday > 0
         d += 7
         d -= d.wday
