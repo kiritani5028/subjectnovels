@@ -9,6 +9,8 @@ class NovelsController < ApplicationController
     if @novel.is_draft
       redirect_to user_url(@novel.user)
     end
+    
+    @subjects = @novel.link_subject
   end
   
   #小説新規作成ページ
@@ -21,6 +23,7 @@ class NovelsController < ApplicationController
     @novel = current_user.novels.build(novel_params)
     
     if @novel.save
+      #今週のお題であるSubjectモデル３つを紐付ける
       subjects = Subject.last(3)
       subjects.each do |subject|
         @novel.connect(subject)

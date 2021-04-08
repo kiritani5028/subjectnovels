@@ -1,13 +1,5 @@
 <div class="row">
-  <!--お題を表示-->
-  <div class="my-5 col-md-12">
-    <%= render 'subjects/three_subjects' %> 
-  </div>
-  
-  <!--新規作成ボタン-->
-  <div class="text-center my-5 offset-md-1 col-md-10">
-    <%= link_to "新規小説作成", new_novel_path, class: 'btn btn-new btn-block' %>
-  </div>
+  <%= render "users/top" %>
   
   <!--投稿した作品一覧を表示-->
   <%= render "users/navtab", user: @user, user_novels: @novels, url: "cards/top_cards" %>

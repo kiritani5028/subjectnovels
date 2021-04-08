@@ -6,7 +6,7 @@ namespace :scheduler do
     today = Date.today
     
     def get_word
-      word = Word.where( 'id >= ?', rand(Word.first.id..Word.last.id) ).first
+      word = Word.where( "id >= ?", rand(Word.first.id..Word.last.id) ).first
       subject = word.subjects.build
       subject.save
     end

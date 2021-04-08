@@ -1,11 +1,13 @@
-<div>
+<div class="mt-5 col-md-12">
   <% novels.each do |novel| %>
     <% if !novel.is_draft%>
       <div class="card mt-4">
         <div class="card-body">
-          <h4 class="card-title"><%= novel.title %></h4>
+          <h4 class="card-title"><%= novel.title %></h4><!--タイトル表示-->
           <p class="card-text border-top">
-            著者：<%= novel.user.name %>
+            著者：<%= novel.user.name %><!--作者表示-->
+            
+            <!--この小説のお題を表示-->
             <span class="right">
               <% subjects = novel.link_subject %>
               <% subjects.each do |subject| %>
@@ -14,15 +16,24 @@
                 </span>
               <% end %>
             </span>
+            
           </p>
-          <%= render "buttons/delete_button", novel: novel %>
-          <%= render "buttons/view_button", novel: novel %>
+          
+          <%= render "buttons/delete_button", novel: novel %><!--削除ボタン-->
+          <%= render "buttons/view_button", novel: novel %><!--閲覧ボタン-->
+          
+          <!--期間内であれば編集ボタンを表示＆アラート文-->
           <% if in_period?(novel)%>
             <%= render "buttons/edit_button", novel: novel %>
             <span class="text-info small">　＊<%= last_duration %> まで編集および投稿ができます。</span>
           <% else %>
           　<span class="text-danger small">＊この作品は期限が過ぎているため編集できません。</span>
           <% end %>
+          
+          <!--お気に入りボタン-->
+          <span class="right">
+            <%= render "buttons/favorite_button", novel: novel %>
+          </span>
         </div>
       </div>
     <% end %>

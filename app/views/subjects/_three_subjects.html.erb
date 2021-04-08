@@ -1,6 +1,4 @@
-<!--Subjectモデルの最新の３つを取得-->
-<% subjects = Subject.last(3) %>
-<div class="mt-5">
+<div class="py-5">
   <div class="text-center border-bottom border-dark">
     <h3>今週のお題</h3>
     <!--今週のお題の期間を表示-->
@@ -8,6 +6,8 @@
   </div>
   
   <div class="row">
+    <!--Subjectモデルの最新の３つを取得-->
+    <% subjects = Subject.last(3) %>
     <% subjects.each do |subject| %>
       <div class="col-md-4 text-center mt-4">
         <div class="subject">

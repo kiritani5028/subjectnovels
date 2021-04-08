@@ -16,4 +16,5 @@ class ApplicationController < ActionController::Base
     @count_posts = user.novels.where(is_draft: false).count
     @count_drafts = user.novels.where(is_draft: true).count
   end
+
 end

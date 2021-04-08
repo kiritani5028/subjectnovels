@@ -3,10 +3,12 @@
     <% if !novel.is_draft%>
       <div class="card mt-4">
         <div class="card-body">
-          <h4 class="card-title"><%= novel.title %></h4>
+          <h4 class="card-title"><%= novel.title %></h4><!--タイトルを表示-->
           <p class="card-text border-top">
-            著者：<%= novel.user.name %>
+            著者：<%= novel.user.name %><!--作者名を表示-->
             <span class="right">
+              
+              <!--この小説のお題を表示-->
               <% subjects = novel.link_subject %>
               <% subjects.each do |subject| %>
                 <span class="badge badge-pill badge-dark">
@@ -14,11 +16,16 @@
                 </span>
               <% end %>
             </span>
+            
           </p>
-          <%= render "buttons/view_button", novel: novel %>
+          
+          <%= render "buttons/view_button", novel: novel %><!--閲覧ボタン-->
+          
+          <!--お気に入りボタン-->
           <span class="right">
             <%= render "buttons/favorite_button", novel: novel %>
           </span>
+          
         </div>
       </div>
     <% end %>

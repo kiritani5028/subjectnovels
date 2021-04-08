@@ -4,22 +4,22 @@
     <% if current_user.like?(novel) %>
       <%= form_with(model: current_user.favorites.find_by(novel_id: novel.id), local: true, method: :delete) do |f| %>
         <%= hidden_field_tag :novel_id, novel.id %>
-        <%= f.button :type => "submit", class: "submit" do %>
-          <i class="fas fa-heart fa-2x pink"></i>
-          <span class="pink"><%= novel.favorites.count %></span>
+        <%= f.button :type => "submit", class: "favorite-submit" do %>
+          <i class="fas fa-heart fa-2x favorite-pink"></i>
+          <span class="favorite-pink"><%= novel.favorites.count %></span>
         <% end %>
       <% end %>
     <% else %>
       <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
         <%= hidden_field_tag :novel_id, novel.id %>
-        <%= f.button :type => "submit", class: "submit" do %>
-          <i class="far fa-heart fa-2x pink"></i>
-          <span class="pink"><%= novel.favorites.count %></span>
+        <%= f.button :type => "submit", class: "favorite-submit" do %>
+          <i class="far fa-heart fa-2x favorite-pink"></i>
+          <span class="favorite-pink"><%= novel.favorites.count %></span>
         <% end %>
       <% end %>
     <% end %>
   <% else %>
-    <i class="far fa-heart fa-2x pink"></i>
-    <span class="pink"><%= novel.favorites.count %></span>
+    <i class="far fa-heart fa-2x favorite-pink"></i>
+    <span class="favorite-pink"><%= novel.favorites.count %></span>
   <% end %>
 </span>

@@ -1,8 +1,34 @@
-.pink{
+.favorite-pink{
     color: #e57373;
 }
 
-.submit{
+.favorite-submit{
     background-color: rgba(0,0,0,0);
     border: none;
+}
+
+.btn-green{
+    color: white;
+    background-color: rgba(104,158,57,0.5);
+    border-radius: 100vh;
+    font-size: 13px;
+    width: 100px;
+}
+
+.btn-green:hover{
+    color: white;
+    background-color: #689e39;
+}
+
+.btn-red{
+    color: white;
+    background-color: rgba(210,48,47,0.5);
+    border-radius: 100vh;
+    font-size: 13px;
+    width: 100px;
+}
+
+.btn-red:hover{
+    color: white;
+    background-color: #d2302f;
 }

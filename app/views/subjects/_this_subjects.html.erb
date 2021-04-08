@@ -1,11 +1,10 @@
-<!--Subjectモデルの最新の３つを取得-->
-<% subjects = novel.link_subject %>
-<div class="mt-5">
+<div class="py-5">
   <div class="text-center border-bottom border-dark">
     <h3>お題</h3>
   </div>
   
   <div class="row">
+    <!--取得した小説に紐付いているSubjectモデルを取得-->
     <% subjects.each do |subject| %>
       <div class="col-md-4 text-center mt-4">
         <div class="subject">

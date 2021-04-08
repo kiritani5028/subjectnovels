@@ -1,7 +1,9 @@
-<div>
-  <h1 class="text-center"><%= @novel.title %></h1>
-  <p class="text-center"><%= @novel.user.name %>：作</p>
-  <%= render "subjects/this_subjects", novel: @novel %>
-  <p class="mt-5"><%= safe_join(@novel.text.split("\n"),tag(:br)) %></p>
-  <%= render "buttons/favorite_button", novel: @novel %>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="text-center mt-5"><%= @novel.title %></h1><!--タイトル表示-->
+    <p class="text-center mb-5">著者：<%= @novel.user.name %></p><!--作者名表示-->
+    <%= render "subjects/this_subjects", subjects: @subjects %>
+    <p class="mt-5 offset-md-1 col-md-10"><%= safe_join(@novel.text.split("\n"),tag(:br)) %></p>
+    <%= render "buttons/favorite_button", novel: @novel %>
+  </div>
 </div>

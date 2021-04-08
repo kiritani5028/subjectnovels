@@ -1,9 +1,9 @@
 <div class="offset-md-1 col-md-10 mt-5">
   <ul class="nav nav-tabs nav-justified mb-3">
-    <li class="nav-item"><a href="<%= root_path %>" class="nav-link black <%= "active" if current_page?(root_path) %>">全て</a></li>
-    <li class="nav-item"><a href="<%= this_week_toppages_path %>" class="nav-link black <%= "active" if current_page?(this_week_toppages_path) %>">今週</a></li>
-    <li class="nav-item"><a href="<%= one_week_ago_toppages_path %>" class="nav-link black <%= "active" if current_page?(one_week_ago_toppages_path) %>">先週</a></li>
-    <li class="nav-item"><a href="<%= two_weeks_ago_toppages_path %>" class="nav-link black <%= "active" if current_page?(two_weeks_ago_toppages_path) %>">先々週</a></li>
+    <li class="nav-item"><a href="<%= root_path %>" class="nav-link tab-black <%= "active" if current_page?(root_path) %>">全て</a></li>
+    <li class="nav-item"><a href="<%= this_week_toppages_path %>" class="nav-link tab-black <%= "active" if current_page?(this_week_toppages_path) %>">今週</a></li>
+    <li class="nav-item"><a href="<%= one_week_ago_toppages_path %>" class="nav-link tab-black <%= "active" if current_page?(one_week_ago_toppages_path) %>">先週</a></li>
+    <li class="nav-item"><a href="<%= two_weeks_ago_toppages_path %>" class="nav-link tab-black <%= "active" if current_page?(two_weeks_ago_toppages_path) %>">先々週</a></li>
   </ul>
   <div class="mt-4">
     <%= render "cards/top_cards", novels: novels%>
