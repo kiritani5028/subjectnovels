@@ -7,7 +7,7 @@ class NovelsController < ApplicationController
   def show
     @novel = Novel.find(params[:id])
     if @novel.is_draft
-      redirect_to user_url(@novel.user)
+      redirect_to root_url
     end
     
     @subjects = @novel.link_subject
