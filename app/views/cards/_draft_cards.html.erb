@@ -22,13 +22,7 @@
           <%= render "buttons/delete_button", novel: novel %><!--削除ボタン-->
           
           <!--期間内であれば編集ボタンを表示＆アラート文-->
-          <% if in_period?(novel)%>
             <%= render "buttons/edit_button", novel: novel %>
-            <span class="text-info small">　＊<%= last_duration %> まで編集および投稿ができます。</span>
-          <% else %>
-          　<span class="text-danger small">この作品は期限が過ぎているため編集および投稿ができません。</span>
-          <% end %>
-          
         </div>
       </div>
     <% end %>

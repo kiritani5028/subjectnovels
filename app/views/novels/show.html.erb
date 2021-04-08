@@ -6,4 +6,11 @@
     <p class="mt-5 offset-md-1 col-md-10"><%= safe_join(@novel.text.split("\n"),tag(:br)) %></p>
     <%= render "buttons/favorite_button", novel: @novel %>
   </div>
+  <div class="center mt-5">
+    <% if @novel.user == current_user %>
+      <%= render "buttons/delete_button", novel: @novel %>
+      <!--期間内であれば編集ボタンを表示＆アラート文-->
+      <%= render "buttons/edit_button", novel: @novel %>
+    <% end %>
+  </div>
 </div>

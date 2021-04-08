@@ -30,7 +30,7 @@ class NovelsController < ApplicationController
       end
       
       if @novel.is_draft
-        flash[:success] = "小説を下書きに保存しました。"
+        flash[:success] = "小説を非公開で保存しました。"
       else
         flash[:success] = "小説を投稿しました。"
       end
@@ -53,7 +53,7 @@ class NovelsController < ApplicationController
   def update
     if @novel.update(novel_params) 
       if @novel.is_draft
-        flash[:success] = "編集した小説を下書きに保存しました。"
+        flash[:success] = "編集した小説を非公開で保存しました。"
       else
         flash[:success] = "編集した小説を投稿しました。"
       end

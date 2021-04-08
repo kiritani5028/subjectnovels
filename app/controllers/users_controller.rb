@@ -1,25 +1,22 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show]
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:destroy, :show, :favorites, :drafts]
   include SubjectsHelper
   
   #ユーザー詳細ページ（投稿した小説一覧）
   def show
-    @user = User.find(params[:id])
     @novels = current_user.novels.order(id: :desc).page(params[:page]).per(25)
     counts(@user)
   end
   
   #ユーザー詳細ページ（お気に入りに追加した作品）
   def favorites
-    @user = User.find(params[:id])
     @novels = current_user.like_novel.order(id: :desc).page(params[:page]).per(25)
     counts(@user)
   end
   
   #ユーザー詳細ページ（下書き一覧）
   def drafts
-    @user = User.find(params[:id])
     @novels = current_user.novels.order(id: :desc).page(params[:page]).per(25)
     counts(@user)
   end

@@ -23,12 +23,7 @@
           <%= render "buttons/view_button", novel: novel %><!--閲覧ボタン-->
           
           <!--期間内であれば編集ボタンを表示＆アラート文-->
-          <% if in_period?(novel)%>
-            <%= render "buttons/edit_button", novel: novel %>
-            <span class="text-info small">　＊<%= last_duration %> まで編集および投稿ができます。</span>
-          <% else %>
-          　<span class="text-danger small">＊この作品は期限が過ぎているため編集できません。</span>
-          <% end %>
+          <%= render "buttons/edit_button", novel: novel %>
           
           <!--お気に入りボタン-->
           <span class="right">

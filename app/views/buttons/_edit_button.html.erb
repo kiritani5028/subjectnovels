@@ -1,1 +1,6 @@
-<%= link_to "編集", edit_novel_path(novel), class: "btn btn-green btn-sm" %>
+<% if in_period?(novel)%>
+  <%= link_to "編集", edit_novel_path(novel), class: "btn btn-green btn-sm" %>
+  <span class="text-info small">　＊<%= last_duration %> まで編集および投稿ができます。</span>
+<% else %>
+  <span class="text-danger small">＊この作品は期限が過ぎているため編集できません。</span>
+<% end %>
