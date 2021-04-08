@@ -11,7 +11,7 @@ namespace :scheduler do
       subject.save
     end
     
-    if today.wday == 0
+    if today.wday == 0 #UTC現地時間の日曜日午後３時にschedulerをセットするので"０"を記述（日本時間では月曜日午前０時）
       3.times do ||
         get_word
       end
